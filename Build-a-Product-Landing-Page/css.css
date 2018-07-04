@@ -332,6 +332,7 @@ nav ul {
     border: 0.5px solid rgb(212, 245, 245);
     border-radius: 5px;
     background-color: white;
+    text-shadow: 4px 4px 8px #b3c5da;
 }
 #social .user-info .user-name {
     background-color: rgb(221, 221, 221);
