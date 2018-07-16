@@ -7,6 +7,10 @@ html , body {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
 }
+a:link {color: #000000}
+a:visited {color: rgb(0, 41, 102) 102, 0)}
+a:hover {color: #FFCC00}
+a:active {color: #FF00CC}
 /* định kiểu cho thanh navbar */
 nav ul {
     position: fixed;
@@ -126,21 +130,26 @@ a {
 }
 .contact-details {
     display: inline-block;
-    margin: 100px auto 100px;
-    padding: 20px;
+    margin: 0 40px 50px 40px;
+    /* margin: 100px auto 100px; */
+    /* padding: 20px; */
     width: 100px;
     height: 100px;
     border-radius: 100%;
     border: 2px solid green;
     background: rgb(196, 192, 181);
     text-align:center;
+    line-height: 100px;
+    list-style-type: none;
 
 }
 .contact a {
+    
     font-size: 1em;
     font-weight: bold;
     color: red;
     text-decoration: none;
+    padding: auto;
 }
 
 
