@@ -1,0 +1,35 @@
+[
+	{
+		"env" : "dev" ,
+		"port" : 8080
+	},
+	{
+		"env" : "promise",
+		"port" : 9000
+	},
+	{
+		"env" : "user",
+		"port" : 8000
+	},
+	{
+		"env" : "guest",
+		"port" : 80
+	},
+	{
+		"env" : "customer",
+		"port" : 443
+	},
+	{
+		"env" : "anonymouse",
+		"port" : 9999
+	},
+	{
+		"env" : "US",
+		"port" : 20020
+	},
+	{
+		"env" : "VI",
+		"port" : 30030
+	}
+
+]

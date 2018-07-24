@@ -1,0 +1,31 @@
+[
+	{
+		"env" : "dev",
+		"describe" : "Configtion file"
+	},
+	{
+		"env" : "api",
+		"describe" : "Configtion file"
+	},
+	{
+		"env" : "user",
+		"describe" : "Configtion file"
+	},
+	{
+		"env" : "guest",
+		"describe" : "Configtion file"
+	},
+	{
+		"env" : "anonymouse",
+		"describe" : "Configtion file",
+		"port" : 0
+	},
+	{
+		"env" : "US",
+		"describe" : "Americain and .."
+	},
+	{
+		"env" : "VI",
+		"describe" : "Danh cho khu vuc vietnam"
+	}
+]
