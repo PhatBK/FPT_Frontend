@@ -10,11 +10,8 @@ body {
 	background: #f5f5f5;
 	color: #4d4d4d;
 	min-width: 230px;
-	max-width: 550px;
+	max-width: 650px;
 	margin: 0 auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 	font-weight: 300;
 }
 button {
@@ -28,11 +25,11 @@ button {
 }
 input[type="checkbox"] {
 	outline: none;
+	transform: scale(1.5);
 }
-
-
+/* Phan tu chinh chua ung dung */
 #demo-app {
-	width: 550px;
+	width: 600px;
 	height: auto;
     background: #fff;
 	background: rgba(255, 255, 255, 0.9);
@@ -44,47 +41,29 @@ input[type="checkbox"] {
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
 				0 25px 50px 0 rgba(0, 0, 0, 0.15);
 }
-/* #demo-app:before {
-    content: '';
-	border-left: 1px solid #f5d6d6;
-	border-right: 1px solid #f5d6d6;
-	width: 2px;
-	position: absolute;
-	top: 0;
-	left: 40px;
-	height: 100%;
-} */
-
 #demo-app h1 {
 	position: absolute;
 	text-align: center;
-	top: -120px;
+	top: -100px;
 	width: 100%;
-	font-size: 80px;
+	font-size: 50px;
 	font-weight: bold;
 }
 #demo-header {
 	padding-top: 20px;
 	border-radius: inherit;
+	margin-bottom: 20px;
 }
-#demo-header:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	height: 15px;
-	z-index: 2;
-	border-bottom: 1px solid #6c615c;
-	background: #8d7d77;
-}
-#demo-input {
+#demo-app input::-webkit-input-placeholder {
 	font-style: italic;
+	font-weight: 300;
+	color: #e6e6e6;
 }
 #demo-input {
 	position: relative;
 	margin: 0;
 	width: 100%;
+	font-style: italic;
 	font-size: 24px;
 	font-family: inherit;
 	line-height: 1.4em;
@@ -95,8 +74,9 @@ input[type="checkbox"] {
 	border: 1px solid #999;
 	box-shadow: inset 0 -1px 10px 0 rgba(0, 0, 0, 0.2);
 }
+/* ô input đê nhập một phần tử mới */
 #demo-input {
-	padding: 16px 0px 16px 50px;
+	padding: 16px 0px 16px 100px;
 	border: none;
 	background: rgba(0, 0, 0,0);
 	z-index: 2;
@@ -107,27 +87,18 @@ input[type="checkbox"] {
 	z-index: 2;
 	border-top: 1px solid #adadad;
 }
-label[for='toggle-all'] {
-	display: none;
-}
+
+/* Chọn tất cả các phần tử */
 #demo-toggle-all {
 	position: absolute;
-	top: -42px;
-	left: -4px;
-	width: 40px;
+	top: -60px;
+	left: 5px;
+	width: 15px;
+	height:15px;
 	text-align: center;
 	border: none;
 }
-/* #demo-toggle-all:before {
-	content: '❯';
-	font-size: 28px;
-	color: #d9d9d9;
-	padding: 0 25px 7px;
-	transform: rotate(180deg); 
-} */
-#demo-toggle-all:checked:before {
-	color: #737373;
-}
+
 #demo-lists {
 	list-style:none;
 	margin : 0px;
@@ -135,41 +106,26 @@ label[for='toggle-all'] {
 }
 #demo-lists li {
 	position: relative;
-	font-size: 20px;
-	border-bottom: 1px solid #ccc;
-	/* padding : 15px; */
+	font-size: 24px;
+	border-bottom: 1px solid #ededed;
 }
-#demo-lists li .demo-view  {
-	
-}
-#demo-lists li .demo-view .demo-toggle {
-	text-align: center;
-	width: 40px;
-	height: auto;
+
+#demo-lists li .demo-toggle {
 	position: absolute;
+	text-align: center;
+	width: 15px;
+	height: 15px;
+	/* height: auto; */
 	top: 0;
 	bottom: 0;
+	left:10px;
 	margin: auto 0;
-	border: none; 
-	appearance: none;
+	border: 1px solid gray; 
+	/* border-radius: 100%; */
+	/* Thuộc tính dùng để ẩn ô checkbox */
+	/* appearance: none; */
 }
-/* #demo-lists li .demo-view .demo-toggle:before {
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
-}
-#demo-lists li .demo-view .demo-toggle:after {
-	content: '✔';
-	line-height: 43px; 
-	font-size: 20px;
-	color:orange;
-	text-shadow: 0 -1px 0 #bfbfbf;
-}
-#demo-lists li .demo-view .demo-toggle:checked:after {
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
-	color: #85ada7;
-	text-shadow: 0 1px 0 #669991;
-	bottom: 1px;
-	position: relative;
-} */
+
 #demo-lists li .demo-view label {
 	white-space: pre-line;
 	word-break: break-all;
@@ -179,8 +135,12 @@ label[for='toggle-all'] {
 	line-height: 1.2;
 	transition: color 0.4s;
 }
-#demo-lists li .demo-view .demo-destroy {
-	display: none;
+#demo-lists li .demo-view label.demo-Delete {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
+#demo-lists li .demo-destroy {
+	/* display: none; */
 	position: absolute;
 	top: 0;
 	right: 10px;
@@ -189,30 +149,27 @@ label[for='toggle-all'] {
 	height: 40px;
 	margin: auto 0;
 	font-size: 30px;
-	color: #cc9a9a;
+	color: white;
 	margin-bottom: 11px;
 	transition: color 0.2s ease-out;
 }
-#demo-lists li .demo-view .demo-destroy:hover {
-	color:#af5b5e;
+#demo-lists li .demo-destroy:hover {
+	color: rgb(122, 21, 21);
+	background-color: gray;
+}
+#demo-lists li:hover .demo-destroy {
+	color: rgb(122, 21, 21);
+	background-color: gray;
+}
+#demo-lists li .demo-view .demo-destroy:visited {
+	background-color: yellow;
+}
+#demo-lists li .demo-view .demo-destroy:focus {
+	background-color: cyan;
 }
 #demo-lists li .demo-view .demo-destroy:after {
-	content : 'x';
+	content : '×';
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #demo-footer {
 	color: #777;
@@ -241,6 +198,7 @@ label[for='toggle-all'] {
 }
 #demo-count strong {
 	font-weight : 300;
+	color: red;
 }
 #demo-filters {
 	margin: 0;
@@ -261,30 +219,45 @@ label[for='toggle-all'] {
 	border: 1px solid transparent;
 	border-radius: 3px;
 }
-#demo-filters li a.demo-selected,
-#demo-filters li a.demo-selectedz:hover {
-	border-color: rgba(175, 47, 47, 0.1);
-}
 #demo-filters li a.demo-selected {
-	border-color: rgba(175, 47, 47, 0.2);
+	border-color: red; 
+}
+#demo-filters li a:hover {
+	border-color: rgba(19, 233, 19, 0.822);
 }
 
 
-
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-	.toggle-all,
-	.todo-list li .toggle {
-		background: none;
-	}
-
-	.todo-list li .toggle {
-		height: 40px;
-	}
-
-	.toggle-all {
-		-webkit-transform: rotate(90deg);
-		transform: rotate(90deg);
-		-webkit-appearance: none;
-		appearance: none;
-	}
+/* Footer chính */
+footer.footer-main {
+	display: block;
+	text-align: center;
+	/* width: 100%; */
+	width: 600px;
+	margin: 10% 100px 50px 0px;
+	border: 1px solid #ccc;
+	position: relative;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
+				0 25px 50px 0 rgba(0, 0, 0, 0.15);
+	
+}
+footer.footer-main #demo-info {
+	font-size: 15px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+footer.footer-main #demo-author {
+	font-size: 15px;
+	font-weight: bold;
+	box-shadow: 10px 10px 20px gray;
+}
+footer.footer-main #demo-author-link {
+	text-align: center;
+	font-size: 15px;
+}
+footer.footer-main #demo-author-link a {
+	text-decoration: none;
+}
+footer.footer-main #demo-author-link a:hover {
+	color:red;
 }
