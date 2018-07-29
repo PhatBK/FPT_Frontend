@@ -39,7 +39,8 @@ class App extends Component {
     const newTodo = {
       id: this.state.todos.reduce((newId, todo) => Math.max(newId, todo.id), -1) + 1,
       name: text,
-      completed: false
+      completed: false,
+      editing : false
     }
     const todos = [...this.state.todos, newTodo];
     this.setState({todos: todos});
@@ -97,12 +98,27 @@ class App extends Component {
   }
  
   editTodo = (id,text) => {
-
+    console.log(id + ":" +text);
+    let change = prompt("Please change item in box ....",text);
+    let itemNew;
+    if(change === null || change === ""){
+      itemNew = text.trim();
+    }else{
+      itemNew = change;
+    }
+    let oldtodo = this.state.todos[id];
+    let todoNew =  {
+      id: id,
+      name: itemNew,
+      completed: false,
+      editing : true
+    }
+    let todoPre = this.state.todos.slice(0,id);
+    let todoSuf = this.state.todos.slice(id,this.state.count);
+    todoSuf.shift();
+    let result = [...todoPre,todoNew,...todoSuf];
+    this.setState({todos : result});
   }
-  allTodos = () => {
-
-  }
-  
 
   render() {
     return (
@@ -112,25 +128,24 @@ class App extends Component {
           <section id="demo-main">
             <MainSectionList
               deleteTodo = {this.deleteTodo}
+              checkedall = {this.checkedAll}
+              checkCount = {this.checkCount}
+              editTodo = {this.editTodo}
+
               data = {this.state.todos}
               completedall = {this.state.completedAll}
-              checkedall = {this.checkedAll}
               activeall = {this.state.activedAll}
-              checkCount = {this.checkCount}
+              
             />
             <MainSectionFooterFilters 
               completedTodos = {this.completedTodos}
               activedTodos = {this.activedTodos}
-              allTodos = {this.allTodos}
-              editTodo = {this.editTodo}
               clearnall = {this.clearnAll}
               backupall = {this.backupAll}
               resetall = {this.resetAll}
 
               count = {this.state.count}
               checkedall = {this.state.checkedall}
-
-
             />
           </section>
         </section>

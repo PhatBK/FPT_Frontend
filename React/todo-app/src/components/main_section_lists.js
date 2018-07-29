@@ -10,9 +10,9 @@ class MainSectionList extends Component {
             lable_delete : false,
             count_checked : 0,
             count_uncheck : 0,
-            check_lable : [
+            check_lable : [],
+            change_lable : " ",
 
-            ],
         };
         this.showAll        =  this.showAll.bind(this);
         this.showElement    =  this.showElement.bind(this);
@@ -20,7 +20,13 @@ class MainSectionList extends Component {
         this.showCheckbox   =  this.showCheckbox.bind(this);
     }
     resetAll = () => {
-
+        this.setState({check_id : '*'});
+        this.setState({check_ed : false});
+        this.setState({check_all : false});
+        this.setState({lable_delete : false});
+        this.setState({count_checked : 0});
+        this.setState({count_uncheck : 0});
+        this.setState({check_lable : []}); 
     }
     // Xóa một phần tử
     handleDeleteTodo = (id) => {
@@ -64,11 +70,12 @@ class MainSectionList extends Component {
         }
         this.props.checkedall(this.state.check_all);
     }
-    // xóa tất cá các phần tử
-    handleDeleteAll = () => {
-
+    handleChangeText = (event) => {
+        
+        this.setState({change_lable : "change"});
+        this.props.editTodo(event.target.id,event.target.textContent);
     }
-
+    
     showCheckbox = (index) => {
         if(this.state.check_all || this.props.completedall){
             return (
@@ -98,13 +105,19 @@ class MainSectionList extends Component {
     }
     showLable = (lable, index) => {
         return (
-            <label className = " " id =  {index} >{lable}</label>
+            <label 
+                onDoubleClick = {event => this.handleChangeText(event)} 
+                className = " "
+                id = {index}
+            >
+            {lable}
+            </label>
         );
     }
     showElement = (item, index) => {
        
         return (
-            <li key={item.id}>
+            <li key={item.id} className = " ">
                 <div className="demo-view">
                     {this.showCheckbox(index)}
                     {this.showLable(item.name, index)}

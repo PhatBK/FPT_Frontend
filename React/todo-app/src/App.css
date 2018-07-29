@@ -59,6 +59,7 @@ input[type="checkbox"] {
 	font-weight: 300;
 	color: #e6e6e6;
 }
+
 #demo-input {
 	position: relative;
 	margin: 0;
@@ -170,6 +171,51 @@ input[type="checkbox"] {
 #demo-lists li .demo-view .demo-destroy:after {
 	content : '×';
 }
+#demo-lists li:last-child {
+	border-bottom: none;
+}
+#demo-lists li .edit {
+	/* display : none; */
+}
+.edit {
+	position: relative;
+	margin: 0;
+	width: 100%;
+	font-size: 24px;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1.4em;
+	border: 0;
+	outline: none;
+	color: inherit;
+	padding: 6px;
+	border: 1px solid #999;
+	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+#demo-lists li.editing {
+	border-bottom: none;
+	padding: 0;
+}
+#demo-lists li.editing .edit {
+	display: block;
+	width: 500px;
+	padding: 100%;
+	margin: 0 0 20px 43px;
+}
+#demo-lists li.editing .view {
+	display : none;
+}
+#demo-lists li.editing:last-child {
+	margin-bottom: -1px;
+}
+#demo-lists li.change {
+	background-color: gray;
+}
+
 
 #demo-footer {
 	color: #777;
