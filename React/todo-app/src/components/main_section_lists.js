@@ -7,12 +7,11 @@ class MainSectionList extends Component {
             check_id : '*',
             check_ed : false,
             check_all : false,
-            lable_delete : false,
+            lable_delete : " ",
             count_checked : 0,
             count_uncheck : 0,
             check_lable : [],
             change_lable : " ",
-
         };
         this.showAll        =  this.showAll.bind(this);
         this.showElement    =  this.showElement.bind(this);
@@ -23,7 +22,7 @@ class MainSectionList extends Component {
         this.setState({check_id : '*'});
         this.setState({check_ed : false});
         this.setState({check_all : false});
-        this.setState({lable_delete : false});
+        this.setState({lable_delete : " "});
         this.setState({count_checked : 0});
         this.setState({count_uncheck : 0});
         this.setState({check_lable : []}); 
@@ -41,18 +40,18 @@ class MainSectionList extends Component {
     handleChecked = (event) => {
         if(event.target.checked){
             this.setState({check_id : event.target.id});
-            this.setState({lable_delete : true})
+            this.setState({lable_delete : " "})
             this.setState({check_ed : true});
             this.setState({count_checked : this.state.count_checked + 1});
-            this.props.checkCount(this.state.count_checked,true);
-            console.log(this.state.count_checked);
+            this.setState({count_uncheck : 0});
+            this.props.checkCount(1,true);
         }else{
             this.setState({check_id : '*'});
-            this.setState({lable_delete : false});
+            this.setState({lable_delete : " "});
             this.setState({check_ed : false});
             this.setState({count_uncheck : this.state.count_uncheck + 1});
-            this.props.checkCount(this.state.count_uncheck,false);
-            console.log(this.state.count_uncheck);
+            this.props.checkCount(1,false);
+            this.setState({count_checked : 0});
         }
     }
     // chọn tất cả các phần tử
@@ -61,17 +60,22 @@ class MainSectionList extends Component {
             console.log("Checkall ...");
             this.setState({check_all : true});
             this.setState({check_ed : true});
-            this.setState({lable_delete : true});
+            this.setState({lable_delete : "demo-Delete"});
+            this.props.checkCountAll();
         }else{
             console.log("Uncheckall ...");
             this.setState({check_all : false});
             this.setState({check_ed : false});
-            this.setState({lable_delete : false});
+            this.setState({lable_delete : " "});
+            this.props.checkCountAll();
         }
         this.props.checkedall(this.state.check_all);
-    }
-    handleChangeText = (event) => {
+        console.log(this.state.check_all);
         
+    }
+
+    handleChangeText = (event) => {
+
         this.setState({change_lable : "change"});
         this.props.editTodo(event.target.id,event.target.textContent);
     }
@@ -103,19 +107,42 @@ class MainSectionList extends Component {
             );
         }
     }
+
     showLable = (lable, index) => {
-        return (
-            <label 
-                onDoubleClick = {event => this.handleChangeText(event)} 
-                className = " "
-                id = {index}
-            >
-            {lable}
-            </label>
-        );
+        if(this.props.completedall){
+            return (
+                <label 
+                    onDoubleClick = {event => this.handleChangeText(event)} 
+                    className = "demo-Delete"
+                    id = {index}
+                >
+                {lable}
+                </label>
+            );
+        }else if(this.props.activeall){
+            return (
+                <label 
+                    onDoubleClick = {event => this.handleChangeText(event)} 
+                    className = " "
+                    id = {index}
+                >
+                {lable}
+                </label>
+            );
+        }else{
+            return (
+                <label 
+                    onDoubleClick = {event => this.handleChangeText(event)} 
+                    className = {this.state.lable_delete}
+                    id = {index}
+                >
+                {lable}
+                </label>
+            );
+        }
     }
+
     showElement = (item, index) => {
-       
         return (
             <li key={item.id} className = " ">
                 <div className="demo-view">
@@ -126,7 +153,6 @@ class MainSectionList extends Component {
             </li>
         );
     }
-
 
     showAll = () => {
             return (

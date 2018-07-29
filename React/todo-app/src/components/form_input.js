@@ -8,11 +8,16 @@ class FormInput extends Component {
     }
   }
   handleAddTodo = (event) => {
+
     if (event.key === 'Enter') {
-      // gửi dữ liệu từ form ngươc lên cho App ==> thêm vào mảng Item
-      this.props.addTodo(this.state.text);
-      // đặt lại ô input bằng ""
-      this.setState({text: ''});
+      if(this.state.text.trim().length === 0){
+        this.setState({text: ''});
+      }
+      if(this.state.text !== null && this.state.text !== "" && this.state.text.trim().length > 0){
+        this.props.addTodo(this.state.text.trim());
+        this.setState({text: ''});
+      }
+      
     }
   }
 

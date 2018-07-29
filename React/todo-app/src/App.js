@@ -5,27 +5,24 @@ import './App.css';
 import {FormInput} from './components/form_input';
 import {MainSectionList} from './components/main_section_lists';
 import {MainSectionFooterFilters} from './components/main_section_footer_filters';
-// import {Footer} from './components/footer';
+import {Footer} from './components/footer';
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-       todos : 
-       [
-
-       ],
-       backups :
-       [
-
-       ],
+       todos : [],
+       backups : [],
        count : 0,
        checkedall : false,
        completedAll : false,
        activedAll : false,
     };
+    this.resetAll = this.resetAll.bind(this);
   }
+
+
   resetAll = (boolean) => {
     if(boolean){
       this.setState({count : 0});
@@ -58,6 +55,9 @@ class App extends Component {
     }else{
       alert("Need check on the checkbox..");
     }
+    if(this.state.todos.length === 0){
+      this.resetAll();
+    }
   }
   clearnAll = (boolean) => {
     if(boolean){
@@ -79,14 +79,36 @@ class App extends Component {
   }
 
   checkCount = (count,boolean) => {
+    let length = this.state.todos.length;
     if(boolean){
-      this.setState({count : this.state.count - count - 1});
+      this.setState({count : this.state.count - count});
     }else{
       this.setState({count : this.state.count + count});
     }
   }
+  checkCountAll = () => {
+    if(!this.state.checkedall){
+      this.setState({count: 0});
+    }else{
+      this.setState({count: this.state.todos.length});
+    }
+  }
+  checkCountActived = () => {
+    if(!this.state.activedAll){
+      this.setState({count: this.state.todos.length});
+    }
+  }
+  checkCountCompleted = () => {
+    if(!this.state.completedAll){
+      this.setState({count: 0});
+    }
+  }
+
+
   checkedAll = (boolean) => {
     this.setState({checkedall : !boolean});
+    this.setState({completedAll : false});
+    this.setState({activedAll : false});
   }
   completedTodos = () => {
     this.setState({completedAll: true});
@@ -95,6 +117,7 @@ class App extends Component {
   activedTodos = () => {
     this.setState({activedAll : true});
     this.setState({completedAll: false});
+    this.setState({checkedall : false});
   }
  
   editTodo = (id,text) => {
@@ -106,7 +129,6 @@ class App extends Component {
     }else{
       itemNew = change;
     }
-    let oldtodo = this.state.todos[id];
     let todoNew =  {
       id: id,
       name: itemNew,
@@ -130,6 +152,7 @@ class App extends Component {
               deleteTodo = {this.deleteTodo}
               checkedall = {this.checkedAll}
               checkCount = {this.checkCount}
+              checkCountAll = {this.checkCountAll}
               editTodo = {this.editTodo}
 
               data = {this.state.todos}
@@ -143,12 +166,15 @@ class App extends Component {
               clearnall = {this.clearnAll}
               backupall = {this.backupAll}
               resetall = {this.resetAll}
+              checkCountActived = {this.checkCountActived}
+              checkCountCompleted = {this.checkCountCompleted}
 
               count = {this.state.count}
               checkedall = {this.state.checkedall}
             />
           </section>
         </section>
+        <Footer />
       </div>
     );
   }

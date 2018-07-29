@@ -19,7 +19,6 @@ class MainSectionFooterFilters extends Component {
     }
     // đặt lại mặc định cho tất cả các state
     resetAll = () => {
-
         this.setState({completedAll : false});
         this.setState({activeAll : false});
         this.setState({clearnAll : false});
@@ -39,7 +38,9 @@ class MainSectionFooterFilters extends Component {
         this.setState({cssActive : " "});
         this.setState({cssClearnAll : " "});
         this.setState({cssBackup : " "});
+        
         this.props.completedTodos();
+        this.props.checkCountCompleted();
         console.log("Completed was choised...");
     }
     handleActive = (event) => {
@@ -52,7 +53,9 @@ class MainSectionFooterFilters extends Component {
         this.setState({cssCompleted : " "});
         this.setState({cssClearnAll : " "});
         this.setState({cssBackup : " "});
+        
         this.props.activedTodos();
+        this.props.checkCountActived();
         console.log("Active was choised...");
     }
     handleClearnAll = (event) => {
@@ -83,7 +86,7 @@ class MainSectionFooterFilters extends Component {
     showElement = () => {
         return (
             <footer id="demo-footer">
-                        <span id="demo-count"><strong>{this.props.count} &nbsp;</strong>Items left</span>
+                        <span id="demo-count"><strong>{this.props.count} &nbsp;</strong>Items activing</span>
 
                         <ul id="demo-filters">
                             <li>
