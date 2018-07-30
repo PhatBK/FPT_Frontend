@@ -79,7 +79,6 @@ class App extends Component {
   }
 
   checkCount = (count,boolean) => {
-    let length = this.state.todos.length;
     if(boolean){
       this.setState({count : this.state.count - count});
     }else{
@@ -104,7 +103,6 @@ class App extends Component {
     }
   }
 
-
   checkedAll = (boolean) => {
     this.setState({checkedall : !boolean});
     this.setState({completedAll : false});
@@ -121,10 +119,9 @@ class App extends Component {
   }
  
   editTodo = (id,text) => {
-    console.log(id + ":" +text);
     let change = prompt("Please change item in box ....",text);
     let itemNew;
-    if(change === null || change === ""){
+    if(change === null || change === "" || change.trim().length === 0){
       itemNew = text.trim();
     }else{
       itemNew = change;
@@ -154,11 +151,9 @@ class App extends Component {
               checkCount = {this.checkCount}
               checkCountAll = {this.checkCountAll}
               editTodo = {this.editTodo}
-
               data = {this.state.todos}
               completedall = {this.state.completedAll}
               activeall = {this.state.activedAll}
-              
             />
             <MainSectionFooterFilters 
               completedTodos = {this.completedTodos}
@@ -168,7 +163,6 @@ class App extends Component {
               resetall = {this.resetAll}
               checkCountActived = {this.checkCountActived}
               checkCountCompleted = {this.checkCountCompleted}
-
               count = {this.state.count}
               checkedall = {this.state.checkedall}
             />

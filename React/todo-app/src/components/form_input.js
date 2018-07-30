@@ -17,7 +17,6 @@ class FormInput extends Component {
         this.props.addTodo(this.state.text.trim());
         this.setState({text: ''});
       }
-      
     }
   }
 

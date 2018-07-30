@@ -8,7 +8,6 @@ class MainSectionFooterFilters extends Component {
             completedAll : false,
             activeAll : false,
             clearnAll : false,
-
             cssClearnAll : " ",
             cssActive : " ",
             cssCompleted : " ",

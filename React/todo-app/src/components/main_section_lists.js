@@ -45,6 +45,8 @@ class MainSectionList extends Component {
             this.setState({count_checked : this.state.count_checked + 1});
             this.setState({count_uncheck : 0});
             this.props.checkCount(1,true);
+            let labels = document.getElementsByTagName('label');
+            labels[event.target.id].setAttribute('class','demo-Delete');
         }else{
             this.setState({check_id : '*'});
             this.setState({lable_delete : " "});
@@ -52,6 +54,8 @@ class MainSectionList extends Component {
             this.setState({count_uncheck : this.state.count_uncheck + 1});
             this.props.checkCount(1,false);
             this.setState({count_checked : 0});
+            let labels = document.getElementsByTagName('label');
+            labels[event.target.id].setAttribute('class',' ');
         }
     }
     // chọn tất cả các phần tử
@@ -71,13 +75,18 @@ class MainSectionList extends Component {
         }
         this.props.checkedall(this.state.check_all);
         console.log(this.state.check_all);
-        
     }
 
     handleChangeText = (event) => {
-
         this.setState({change_lable : "change"});
-        this.props.editTodo(event.target.id,event.target.textContent);
+        if((this.state.check_ed && this.state.check_id === event.target.id) 
+            || this.props.completedall 
+            || this.state.check_all
+        ){
+            alert("You can't change element checked...");
+        }else{
+            this.props.editTodo(event.target.id,event.target.textContent);
+        }
     }
     
     showCheckbox = (index) => {
